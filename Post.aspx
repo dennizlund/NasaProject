@@ -18,13 +18,15 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" method="POST" action="index.aspx">
         <div style="height: 703px">
             <br />
             <br />
-            <input id="inputTitle" maxlength="20" type="text" value="Title" /><br />
+            <asp:TextBox ID="inputTitle" runat="server" MaxLength="20"></asp:TextBox>
             <br />
-            <textarea id="contentText" maxlength="50" name="S1"></textarea><br />
+            <br />
+            <asp:TextBox ID="inputContentUpdate" runat="server" TextMode="multiline" MaxLength="20"></asp:TextBox>
+            <br />
             <br />
             <asp:FileUpload ID="FileUpload" runat="server" />
             &nbsp;&nbsp;&nbsp;
@@ -34,7 +36,7 @@
             <asp:Label ID="lblUploadMessage" runat="server"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="buttonPost" runat="server" Text="Post" />
+            <asp:Button ID="buttonPost" runat="server" Text="Post" OnClick="buttonPost_Click" PostBackUrl="~/index.aspx" />
         </div>
     </form>
 </body>

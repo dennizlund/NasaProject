@@ -75,3 +75,19 @@ function newsLoop() {
         newsStatus = 1;
     }
 }
+
+
+
+//function readTextFile() {
+//    var rawFile = new XMLHttpRequest();
+//    rawFile.open("GET", "C:\Users\Dennis\Desktop\DVA231\content\content.txt", false);
+//    rawFile.onreadystatechange = function () {
+//        if (rawFile.readyState === 4) {
+//            if (rawFile.status === 200 || rawFile.status == 0) {
+//                var allText = rawFile.responseText;
+//                document.getElementById("paragraph").innerHTML = allText;
+//            }
+//        }
+//    }
+//    rawFile.send(null);
+//}

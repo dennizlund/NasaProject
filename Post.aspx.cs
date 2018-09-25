@@ -51,4 +51,9 @@ public partial class AdminPage : System.Web.UI.Page
             this.lblUploadMessage.ForeColor = Color.Red;
         }
     }
+
+    protected void buttonPost_Click(object sender, EventArgs e)
+    {
+
+    }
 }

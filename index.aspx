@@ -1,4 +1,6 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="index.aspx.vb" Inherits="index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
+
+<%@ Import Namespace="System.Activities.Statements" %>
 
 <!DOCTYPE html>
 <html>
@@ -71,10 +73,13 @@
                     </li>
                 </ul>
             </div>
-            <div style="text-align: right; min-width: 170px;">
-                <input type="text" class="search_input" value="Search">
-                <button type="submit" class="submit_button">Submit</button>
-            </div>
+            <form action="/" method="post" runat="server">
+                <div style="text-align: right; min-width: 170px;">
+                    <input type="text" class="search_input" value="Search">
+                    <button type="submit" class="submit_button">Submit</button>
+                    <asp:Button Text="Login" runat="server" PostBackUrl="~/Post.aspx" />
+                </div>
+            </form>
         </div>
 
         <div class="news_feed" id="news_feed">
@@ -116,7 +121,7 @@
             <div class="box_image">
                 <img src="./images/onphone.jpg" alt="IMAGE GOES HERE" class="image">
                 <div class="text_block">
-                    <h4>Emma is back</h4>
+                    <h4 on>Emma is back</h4>
                     <p id="hover">What the hell</p>
                 </div>
                 <div class="overlay">
@@ -125,8 +130,13 @@
             </div>
 
             <div class="box_text" id="update_content">
-                <asp:Label ID="lblUpdateContent" runat="server" Text="Label"></asp:Label>
+
+                <h4 runat="server" id="title">This is a h4 element.</h4>
+                <p runat="server" id="paragraph">This is a p element</p>
+
             </div>
+
+
             <div class="box_image">
                 <img src="./images/60th.jpg" alt="">
                 <div class="text_block">
@@ -142,14 +152,13 @@
         <div class="media">
             <div class="box_video">
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7shzR4HPbRw" frameborder="0"
-                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
             <div class="box_image">
                 <img src="./images/oceans.jpg" alt="">
             </div>
             <div>
-                <a class="twitter-timeline" data-width="100%" data-height="100%" href="https://twitter.com/NASA?ref_src=twsrc%5Etfw">
-                    Tweets
+                <a class="twitter-timeline" data-width="100%" data-height="100%" href="https://twitter.com/NASA?ref_src=twsrc%5Etfw">Tweets
                     by NASA
                 </a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
