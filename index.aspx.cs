@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,14 +16,34 @@ public partial class index : System.Web.UI.Page
         string title = Request.Form["inputTitle"];
         string content = Request.Form["inputContentUpdate"];
 
+        using (StreamReader sr = new StreamReader(Server.MapPath("~/content/title.txt"), true))
+        {
+            string line = sr.ReadToEnd();
+            this.title.InnerHtml = line;
+        }
+
+        using (StreamReader sr = new StreamReader(Server.MapPath("~/content/content.txt"), true))
+        {
+            string line = sr.ReadToEnd();
+            this.paragraph.InnerHtml = line;
+        }
+
         if (title != null)
         {
-            this.paragraph.InnerHtml = title;
+            //this.paragraph.InnerHtml = title;
+            using (System.IO.StreamWriter w = new System.IO.StreamWriter(Server.MapPath("~/content/title.txt"), false))
+            {
+                w.WriteLine(title); // Write the text
+            }
         }
 
         if (content != null)
         {
-            this.title.InnerHtml = content;
+            using (System.IO.StreamWriter w = new System.IO.StreamWriter(Server.MapPath("~/content/content.txt"), false))
+            {
+                w.WriteLine(content); // Write the text
+            }
+            //this.title.InnerHtml = content;
         }
         
 
