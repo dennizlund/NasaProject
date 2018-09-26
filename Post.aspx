@@ -18,14 +18,24 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server" method="POST" action="index.aspx">
+    <form id="form1" runat="server" method="POST">
         <div style="height: 703px">
             <br />
             <br />
             <asp:TextBox ID="inputTitle" runat="server" MaxLength="20"></asp:TextBox>
+            <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
+                                        ControlToValidate="inputTitle"
+                                        ErrorMessage="Title is a required field."
+                                        ForeColor="Red">
+            </asp:RequiredFieldValidator>
             <br />
             <br />
             <asp:TextBox ID="inputContentUpdate" runat="server" TextMode="multiline" MaxLength="20"></asp:TextBox>
+            <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="inputContentUpdate"
+                                        ErrorMessage="Title is a required field."
+                                        ForeColor="Red">
+            </asp:RequiredFieldValidator>
             <br />
             <br />
             <asp:FileUpload ID="FileUpload" runat="server" />

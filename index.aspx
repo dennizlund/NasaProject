@@ -138,7 +138,7 @@
 
 
             <div class="box_image">
-                <img src="./images/60th.jpg" alt="">
+                <img src="./images/60th.jpg" runat="server" alt="" id="imageUpdate">
                 <div class="text_block">
                     <h4>Anniversary</h4>
                     <p>Nasa is celebrating its 60th Anniversary</p>

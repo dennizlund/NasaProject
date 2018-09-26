@@ -15,6 +15,7 @@ public partial class index : System.Web.UI.Page
 
         string title = Request.Form["inputTitle"];
         string content = Request.Form["inputContentUpdate"];
+        string imageSrc = Request.Form["btnUpload"];
 
         using (StreamReader sr = new StreamReader(Server.MapPath("~/content/title.txt"), true))
         {
@@ -39,19 +40,19 @@ public partial class index : System.Web.UI.Page
 
         if (content != null)
         {
-            using (System.IO.StreamWriter w = new System.IO.StreamWriter(Server.MapPath("~/content/content.txt"), false))
+            using (System.IO.StreamWriter w = new System.IO.StreamWriter(
+                Server.MapPath("~/content/content.txt"),
+                false))
             {
                 w.WriteLine(content); // Write the text
             }
+
             //this.title.InnerHtml = content;
         }
-        
 
-        Page previousPage = Page.PreviousPage;
-        if (previousPage != null)
+        if (imageSrc != null)
         {
-            //.Text = ((TextBox)previousPage.FindControl("inputTitle")).Text;
+            this.imageUpdate.Src = "./Uploads/" + imageSrc;
         }
     }
-    
 }

@@ -55,5 +55,7 @@ public partial class AdminPage : System.Web.UI.Page
     protected void buttonPost_Click(object sender, EventArgs e)
     {
         Response.Redirect("index.aspx", false);
+
+    
     }
 }
