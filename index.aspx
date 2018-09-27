@@ -77,7 +77,7 @@
                 <div style="text-align: right; min-width: 170px;">
                     <input type="text" class="search_input" value="Search">
                     <button type="submit" class="submit_button">Submit</button>
-                    <asp:Button Text="Login" runat="server" PostBackUrl="~/Post.aspx" />
+                    <asp:Button Text="Login" runat="server" PostBackUrl="~/AdminLogin.aspx" />
                 </div>
             </form>
         </div>
@@ -138,14 +138,11 @@
 
 
             <div class="box_image">
-                <img src="./images/60th.jpg" runat="server" alt="" id="imageUpdate">
-                <div class="text_block">
-                    <h4>Anniversary</h4>
-                    <p>Nasa is celebrating its 60th Anniversary</p>
-                </div>
-                <div class="overlay">
-                    <div class="text">Here will be some information about the anniversary journey.</div>
-                </div>
+                <img src="./images/60th.jpg" runat="server" alt="" ID="imageUpdate">
+                <video controls="controls" runat="server" id="videoUpdate" width="100%" height="100%">
+                    <source  src="./Uploads/sherlock.mp4" />
+                </video>
+                
             </div>
         </div>
 

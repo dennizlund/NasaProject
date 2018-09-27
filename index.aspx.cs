@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,18 +16,25 @@ public partial class index : System.Web.UI.Page
 
         string title = Request.Form["inputTitle"];
         string content = Request.Form["inputContentUpdate"];
-        string imageSrc = Request.Form["btnUpload"];
 
-        using (StreamReader sr = new StreamReader(Server.MapPath("~/content/title.txt"), true))
+        this.paragraph.InnerHtml = readContent("~/content/content.txt");
+        this.title.InnerHtml = readContent("~/content/title.txt");
+
+        using (StreamReader sr = new StreamReader(Server.MapPath("~/content/upload.txt"), true))
         {
             string line = sr.ReadToEnd();
-            this.title.InnerHtml = line;
-        }
+            if (line.EndsWith(".png\r\n") || line.EndsWith(".jpg\r\n"))
+            {
+                this.imageUpdate.Src = line;
+                //this.videoUpdate.Disabled = true;
+                this.videoUpdate.Visible = false;
+            }
+            else
+            {
 
-        using (StreamReader sr = new StreamReader(Server.MapPath("~/content/content.txt"), true))
-        {
-            string line = sr.ReadToEnd();
-            this.paragraph.InnerHtml = line;
+                this.imageUpdate.Visible = false;
+                this.videoUpdate.Attributes["src"] = line;
+            }
         }
 
         if (title != null)
@@ -49,10 +57,15 @@ public partial class index : System.Web.UI.Page
 
             //this.title.InnerHtml = content;
         }
+        
+    }
 
-        if (imageSrc != null)
+    protected string readContent(string path)
+    {
+        using (StreamReader sr = new StreamReader(Server.MapPath(path), true))
         {
-            this.imageUpdate.Src = "./Uploads/" + imageSrc;
+            string line = sr.ReadToEnd();
+            return line;
         }
     }
 }

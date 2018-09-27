@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,9 +22,9 @@ public partial class AdminPage : System.Web.UI.Page
         {
             string fileExtension = System.IO.Path.GetExtension(this.FileUpload.FileName);
 
-            if (fileExtension.ToLower() != ".png" && fileExtension.ToLower() != ".jpeg")
+            if (fileExtension.ToLower() != ".png" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".mp4")
             {
-                this.lblUploadMessage.Text = "Only .png or .jpeg files are allowed";
+                this.lblUploadMessage.Text = "Only .png , .jpeg or .mp4 files are allowed";
                 this.lblUploadMessage.ForeColor = Color.Red;
             }
 
@@ -31,7 +32,7 @@ public partial class AdminPage : System.Web.UI.Page
             {
                 int fileSize = this.FileUpload.PostedFile.ContentLength;
 
-                if (fileSize > 2097152)
+                if (fileSize > 20971520)
                 {
                     this.lblUploadMessage.Text = "Maximum file size (2MB) exceeded";
                     this.lblUploadMessage.ForeColor = Color.Red;
@@ -41,6 +42,11 @@ public partial class AdminPage : System.Web.UI.Page
                     this.FileUpload.SaveAs(Server.MapPath("~/Uploads/" + this.FileUpload.FileName));
                     this.lblUploadMessage.Text = "File Uploaded";
                     this.lblUploadMessage.ForeColor = Color.GreenYellow;
+                    saveLocation("./Uploads/" + this.FileUpload.FileName);
+                    saveText("~/content/title.txt", this.inputTitle.Text);
+                    saveText("~/content/content.txt", this.inputContentUpdate.Text);
+                    Response.Redirect("index.aspx");
+
                 }
             }
 
@@ -54,8 +60,24 @@ public partial class AdminPage : System.Web.UI.Page
 
     protected void buttonPost_Click(object sender, EventArgs e)
     {
-        Response.Redirect("index.aspx", false);
+        Response.Redirect("index.aspx");
+    }
 
-    
+    protected void saveLocation(string path)
+    {
+        using (System.IO.StreamWriter w = new System.IO.StreamWriter(Server.MapPath("~/content/upload.txt"), false))
+        {
+            w.WriteLine(path); // Write the text
+        }
+    }
+
+    protected void saveText(string path, string text)
+    {
+        using (System.IO.StreamWriter w = new System.IO.StreamWriter(
+            Server.MapPath(path),
+            false))
+        {
+            w.WriteLine(text); // Write the text
+        }
     }
 }

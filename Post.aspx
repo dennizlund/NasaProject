@@ -2,52 +2,57 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
+<head>
     <title></title>
-    <style type="text/css">
+    <link href="./css/Post.css" rel="stylesheet" />
+    <%--<style type="text/css">
         #form1 {
             height: 729px;
             width: 1337px;
             margin-left: 200px;
         }
+
         #contentText {
             height: 77px;
             width: 321px;
         }
-    </style>
+    </style>--%>
 </head>
 <body>
-    <form id="form1" runat="server" method="POST">
-        <div style="height: 703px">
-            <br />
-            <br />
-            <asp:TextBox ID="inputTitle" runat="server" MaxLength="20"></asp:TextBox>
-            <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
-                                        ControlToValidate="inputTitle"
-                                        ErrorMessage="Title is a required field."
-                                        ForeColor="Red">
-            </asp:RequiredFieldValidator>
-            <br />
-            <br />
-            <asp:TextBox ID="inputContentUpdate" runat="server" TextMode="multiline" MaxLength="20"></asp:TextBox>
-            <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
-                                        ControlToValidate="inputContentUpdate"
-                                        ErrorMessage="Title is a required field."
-                                        ForeColor="Red">
-            </asp:RequiredFieldValidator>
-            <br />
-            <br />
-            <asp:FileUpload ID="FileUpload" runat="server" />
-            &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" Text="Upload File" Height="23px" Width="94px" />
-            <br />
-            <br />
-            <asp:Label ID="lblUploadMessage" runat="server"></asp:Label>
-            <br />
-            <br />
-            <asp:Button ID="buttonPost" runat="server" Text="Post" OnClick="buttonPost_Click" PostBackUrl="~/index.aspx" />
-        </div>
-    </form>
+    <div class="grid">
+        <form id="form1" runat="server" method="POST">
+
+            <div>
+                <br />
+                <br />
+                <asp:TextBox ID="inputTitle" runat="server" MaxLength="20"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                    ControlToValidate="inputTitle"
+                    ErrorMessage="Title is a required field."
+                    ForeColor="Red">
+                </asp:RequiredFieldValidator>
+                <br />
+                <br />
+                <asp:TextBox ID="inputContentUpdate" runat="server" TextMode="multiline" MaxLength="20"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                    ControlToValidate="inputContentUpdate"
+                    ErrorMessage="Content is a required field."
+                    ForeColor="Red">
+                </asp:RequiredFieldValidator>
+                <br />
+                <br />
+                <asp:FileUpload ID="FileUpload" runat="server" />
+                &nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" Text="Post Update" Height="23px" Width="94px" />
+                <br />
+                <br />
+                <asp:Label ID="lblUploadMessage" runat="server"></asp:Label>
+                <br />
+                <br />
+            </div>
+
+        </form>
+    </div>
 </body>
 </html>

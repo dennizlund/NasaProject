@@ -1,0 +1,12 @@
+﻿.grid {
+    display: grid;
+    grid-template: 25% 25% 25% 25%;
+    justify-content: center;
+}
+
+.btnLogin {
+    padding: 10px;
+    border: none;
+    margin-top: 5px;
+    background-color: maroon;
+}

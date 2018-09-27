@@ -184,8 +184,16 @@ a {
 
 
 .box_image img{
+    width: 100%;
+    height: 100%;
     object-fit: fill;
     display: block;
+}
+
+.box_image .text_block p:hover {
+    background: white;
+    fill: #fff;
+    height: 100%;
 }
 
 .box_video iframe{
@@ -203,11 +211,7 @@ a {
     color: white;
 }
 
-.box_image .text_block p:hover{
-    background: white;
-    fill: #fff;
-    height: 100%;
-}
+
 
 .box_text ul{
     list-style: none;
@@ -220,12 +224,6 @@ a {
     grid-area: media;
     grid-template-columns: 1fr 2fr 1fr;
     grid-column-gap: 5px;
-}
-
-.media img{
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
 }
 
 /* TESTING */
