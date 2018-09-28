@@ -31,33 +31,11 @@ public partial class index : System.Web.UI.Page
             }
             else
             {
-
                 this.imageUpdate.Visible = false;
                 this.videoUpdate.Attributes["src"] = line;
             }
         }
 
-        if (title != null)
-        {
-            //this.paragraph.InnerHtml = title;
-            using (System.IO.StreamWriter w = new System.IO.StreamWriter(Server.MapPath("~/content/title.txt"), false))
-            {
-                w.WriteLine(title); // Write the text
-            }
-        }
-
-        if (content != null)
-        {
-            using (System.IO.StreamWriter w = new System.IO.StreamWriter(
-                Server.MapPath("~/content/content.txt"),
-                false))
-            {
-                w.WriteLine(content); // Write the text
-            }
-
-            //this.title.InnerHtml = content;
-        }
-        
     }
 
     protected string readContent(string path)
@@ -68,4 +46,5 @@ public partial class index : System.Web.UI.Page
             return line;
         }
     }
+    
 }

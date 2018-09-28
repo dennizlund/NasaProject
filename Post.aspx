@@ -1,8 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="AdminPage" %>
 
 <!DOCTYPE html>
-
-<%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
     <link href="./css/Post.css" rel="stylesheet" />
@@ -21,25 +20,26 @@
 </head>
 <body>
     <div class="grid">
-        <form id="form1" runat="server" method="POST">
-
+        <form id="form" runat="server" method="POST">
             <div>
                 <br />
                 <br />
-                <asp:TextBox ID="inputTitle" runat="server" MaxLength="20"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                <asp:TextBox ID="inputTitle" runat="server" MaxLength="20" CssClass="inputTitle"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server"
                     ControlToValidate="inputTitle"
                     ErrorMessage="Title is a required field."
                     ForeColor="Red">
                 </asp:RequiredFieldValidator>
                 <br />
                 <br />
-                <asp:TextBox ID="inputContentUpdate" runat="server" TextMode="multiline" MaxLength="20"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                <asp:TextBox ID="inputContentUpdate" runat="server" TextMode="multiline" Wrap="True" CssClass="inputContentUpdate"></asp:TextBox>
+                <asp:RegularExpressionValidator runat="server" ID="valInput"
                     ControlToValidate="inputContentUpdate"
-                    ErrorMessage="Content is a required field."
-                    ForeColor="Red">
-                </asp:RequiredFieldValidator>
+                    ForeColor="Red"
+                    ValidationExpression="^[\s\S]{0,100}$"
+                    ErrorMessage="Please enter a maximum of 100 characters"
+                    Display="Dynamic">Please enter a maximum of 100 characters</asp:RegularExpressionValidator>
+
                 <br />
                 <br />
                 <asp:FileUpload ID="FileUpload" runat="server" />
@@ -51,7 +51,6 @@
                 <br />
                 <br />
             </div>
-
         </form>
     </div>
 </body>

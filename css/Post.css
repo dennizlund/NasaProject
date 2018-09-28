@@ -1,17 +1,27 @@
-﻿
+﻿body {
+    background: lightgray;
+}
+
 .grid {
-    background-image: url("../images/background.jpg"); 
     height: 100%;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: fill;
+    display: grid;
+    justify-content: center;
 }
 
-#form1 {
-    width: 100%;
-    height: 100%;
+.inputTitle {
+    width: 345px;
 }
-#inputTitle {
-    
+
+.inputContentUpdate {
+    width: 345px;
+    height: 345px;
+}
+
+button {
+    background: white;
+    color: black;
 }
