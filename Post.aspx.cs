@@ -1,17 +1,62 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 
 public partial class AdminPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //< asp:SqlDataSource
+        //    id = "users"
+        //runat = "server"
+        //DataSourceMode = "DataReader"
+        //ConnectionString = "<%$ ConnectionStrings:SQLServerConnectionString%>"
+        //SelectCommand = "SELECT * FROM Users" >
+        //    </ asp:SqlDataSource >
+        
 
+        
+
+    }
+
+    private ICollection GetAllUsers(string query, string connection)
+    {
+        ArrayList al = new ArrayList();
+
+        ConnectionStringSettings cts = ConfigurationManager.ConnectionStrings[connection];
+
+        SqlDataSource sds = new SqlDataSource(cts.ConnectionString, query);
+
+        try
+        {
+
+            IEnumerable IDs = sds.Select(DataSourceSelectArguments.Empty);
+
+            // Iterate through the Enumeration and create a
+            // NorthwindEmployee object for each ID.
+            foreach (DataRowView row in IDs)
+            {
+                string id = row["username"].ToString();
+                
+                al.Add(id);
+            }
+        }
+        finally
+        {
+            // If anything strange happens, clean up.
+            sds.Dispose();
+        }
+
+        return al;
     }
 
 

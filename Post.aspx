@@ -1,10 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="AdminPage" %>
 
+@{
+var db = Database.Open("SmallBakery"); 
+var selectQueryString = "SELECT * FROM Product ORDER BY Name"; 
+}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
     <link href="./css/Post.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
     <%--<style type="text/css">
         #form1 {
             height: 729px;
@@ -20,7 +26,12 @@
 </head>
 <body>
     <div class="grid">
+        
+
+
+
         <form id="form" runat="server" method="POST">
+
             <div>
                 <br />
                 <br />
