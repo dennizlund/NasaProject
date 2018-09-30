@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <div class="grid">
         <div class="navigation">
             <img src="./images/nasa_logo.png" alt="">
@@ -129,7 +128,7 @@
                 </div>
             </div>
 
-            <div class="box_text" id="update_content">
+            <div class="box_text" onclick="window.location = 'Content.aspx'" id="update_content">
 
                 <h4 runat="server" id="title">This is a h4 element.</h4>
                 <p runat="server" id="paragraph">This is a p element</p>
