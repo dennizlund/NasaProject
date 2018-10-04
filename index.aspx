@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
     <div class="grid">
         <div class="navigation">
             <img src="./images/nasa_logo.png" alt="">
@@ -103,7 +104,7 @@
         </div>
 
         <div class="content">
-            <div class="box_text">
+            <div class="boxText">
                 <h3>NASA events</h3>
                 <hr>
                 <p>
@@ -114,10 +115,10 @@
                     Hubble telescope gallery
                     Noice from space
                 </p>
-                <hr id="bottom_line">
+                <hr id="bottomLine">
             </div>
 
-            <div class="box_image">
+            <div class="boxImage">
                 <img src="./images/onphone.jpg" alt="IMAGE GOES HERE" class="image">
                 <div class="text_block">
                     <h4 on>Emma is back</h4>
@@ -128,29 +129,28 @@
                 </div>
             </div>
 
-            <div class="box_text" onclick="window.location = 'Content.aspx'" id="update_content">
+            <div class="updateDiv">
+                <div class="boxImage" id="updateImage">
+                    <img src="./images/60th.jpg" runat="server" alt="" id="imageUpdate">
+                    <video controls="controls" runat="server" id="videoUpdate" width="50%" height="100%">
+                        <source src="./Uploads/sherlock.mp4" />
+                    </video>
+                </div>
+                <div class="boxText" id="updateContent">
 
-                <h4 runat="server" id="title">This is a h4 element.</h4>
-                <p runat="server" id="paragraph">This is a p element</p>
+                    <h4 runat="server" id="title">This is a h4 element.</h4>
+                    <p runat="server" id="paragraph">This is a p element</p>
 
-            </div>
-
-
-            <div class="box_image">
-                <img src="./images/60th.jpg" runat="server" alt="" ID="imageUpdate">
-                <video controls="controls" runat="server" id="videoUpdate" width="100%" height="100%">
-                    <source  src="./Uploads/sherlock.mp4" />
-                </video>
-                
+                </div>
             </div>
         </div>
 
         <div class="media">
-            <div class="box_video">
+            <div class="boxVideo">
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7shzR4HPbRw" frameborder="0"
                     allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
-            <div class="box_image">
+            <div class="boxImage">
                 <img src="./images/oceans.jpg" alt="">
             </div>
             <div>

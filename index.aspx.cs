@@ -13,6 +13,7 @@ public partial class index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         string title = Request.Form["inputTitle"];
         string content = Request.Form["inputContentUpdate"];
 

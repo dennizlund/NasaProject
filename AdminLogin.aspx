@@ -2,8 +2,6 @@
 
 <!DOCTYPE html>
 
-
-
 <%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
 <html>
 
@@ -16,14 +14,14 @@
     <form id="form1" runat="server">
         <div class="grid">
             <label for="userName">Username</label>
-            <input runat="server" id="userName" type="text" />
+            <input runat="server" id="userName" type="text">
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                 ControlToValidate="userName"
                 ErrorMessage="Username is a required field."
                 ForeColor="Red">
             </asp:RequiredFieldValidator>
             <label for="password">Password</label>
-            <input runat="server" id="password" type="password" />
+            <input runat="server" id="password" type="password">
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                 ControlToValidate="password"
                 ErrorMessage="Password is a required field."
