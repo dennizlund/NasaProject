@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <link href="./css/Post.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
     <%--<style type="text/css">
         #form1 {
             height: 729px;
@@ -21,7 +21,7 @@
 <body>
     <div class="grid">
         <form id="form" runat="server" method="POST">
-            <div>
+            <div class="boxText">
                 <br />
                 <br />
                 <asp:TextBox ID="inputTitle" runat="server" MaxLength="20" CssClass="inputTitle"></asp:TextBox>

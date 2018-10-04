@@ -132,7 +132,7 @@
             <div class="updateDiv">
                 <div class="boxImage" id="updateImage">
                     <img src="./images/60th.jpg" runat="server" alt="" id="imageUpdate">
-                    <video controls="controls" runat="server" id="videoUpdate" width="50%" height="100%">
+                    <video controls="controls" runat="server" id="videoUpdate" width="100%" height="100%">
                         <source src="./Uploads/sherlock.mp4" />
                     </video>
                 </div>

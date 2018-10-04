@@ -77,17 +77,18 @@
                 </div>
             </form>
         </div>
-        <div id="list">
-            <div class="box_image">
+        <div class="updateDiv" id="contentUpdate">
+            <div class="boxImage" id="updateImage">
                 <img src="./images/60th.jpg" runat="server" alt="" id="imageUpdate">
-                <video controls="controls" runat="server" id="videoUpdate">
+                <video controls="controls" runat="server" id="videoUpdate" width="100%" height="100%">
                     <source src="./Uploads/sherlock.mp4" />
                 </video>
             </div>
+            <div class="boxText" id="updateContent">
 
-            <div class="box_text">
                 <h4 runat="server" id="title">This is a h4 element.</h4>
                 <p runat="server" id="paragraph">This is a p element</p>
+
             </div>
         </div>
     </div>

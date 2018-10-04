@@ -260,6 +260,7 @@ a {
 }
 
 .updateDiv {
+    /*grid-area: news_feed;*/
     display: inline-flex;
     position: relative;
     width: 100%;
@@ -293,4 +294,8 @@ a {
     position: absolute;
     left: -40px;
     top: 40%;
+}
+
+. updateDiv #contentUpdate {
+    grid-area: news_feed !important;
 }
