@@ -18,24 +18,26 @@ public partial class index : System.Web.UI.Page
         string title = Request.Form["inputTitle"];
         string content = Request.Form["inputContentUpdate"];
 
-        this.paragraph.InnerHtml = readContent("~/content/content.txt");
-        this.title.InnerHtml = readContent("~/content/title.txt");
+        this.latestUpdate();
 
-        using (StreamReader sr = new StreamReader(Server.MapPath("~/content/upload.txt"), true))
-        {
-            string line = sr.ReadToEnd();
-            if (line.EndsWith(".png\r\n") || line.EndsWith(".jpg\r\n"))
-            {
-                this.imageUpdate.Src = line;
-                //this.videoUpdate.Disabled = true;
-                this.videoUpdate.Visible = false;
-            }
-            else
-            {
-                this.imageUpdate.Visible = false;
-                this.videoUpdate.Attributes["src"] = line;
-            }
-        }
+        //this.paragraph.InnerHtml = readContent("~/content/content.txt");
+        //this.title.InnerHtml = readContent("~/content/title.txt");
+        
+        //using (StreamReader sr = new StreamReader(Server.MapPath("~/content/upload.txt"), true))
+        //{
+        //    string line = sr.ReadToEnd();
+        //    if (line.EndsWith(".png\r\n") || line.EndsWith(".jpg\r\n"))
+        //    {
+        //        this.imageUpdate.Src = line;
+        //        //this.videoUpdate.Disabled = true;
+        //        this.videoUpdate.Visible = false;
+        //    }
+        //    else
+        //    {
+        //        this.imageUpdate.Visible = false;
+        //        this.videoUpdate.Attributes["src"] = line;
+        //    }
+        //}
 
     }
 
@@ -54,25 +56,41 @@ public partial class index : System.Web.UI.Page
 
         myConnection.Open();
 
-        SqlCommand command = new SqlCommand("SELECT * FROM UserAccounts WHERE username = @username AND password = @password", myConnection);
-
-        command.Parameters.AddWithValue("@username", this.userName.Text);
-        command.Parameters.AddWithValue("@password", this.password.Text);
+        SqlCommand command = new SqlCommand("SELECT TOP 1 * FROM Articles ORDER BY id DESC", myConnection);
 
         SqlDataReader reader = command.ExecuteReader();
+        
 
         if (reader.Read())
         {
-            Session["username"] = this.userName.Text;
-            Session["password"] = this.password.Text;
-            myConnection.Close();
-            Response.Redirect("Post.aspx");
+            string content = reader["contentText"].ToString();
+            string title = reader["titleText"].ToString();
+            string source = reader["uploadSrc"].ToString();
+
+            this.paragraph.InnerHtml = content;
+            this.title.InnerHtml = title;
+
+            if (source.EndsWith(".png") || source.EndsWith(".jpg"))
+            {
+                this.imageUpdate.Src = source;
+                this.videoUpdate.Visible = false;
+                myConnection.Close();
+            }
+            else
+            {
+                this.imageUpdate.Visible = false;
+                this.videoUpdate.Attributes["src"] = source;
+                myConnection.Close();
+            }
         }
         else
         {
-            this.LoginMessage.Text = "Wrong username or password";
             myConnection.Close();
         }
+
+
+
     }
-    
+
+
 }

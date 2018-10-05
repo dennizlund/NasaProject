@@ -16,6 +16,8 @@
 
 <body>
 
+    <form id="form1" runat="server">
+
     <div class="grid">
         <div class="navigation">
             <img src="./images/nasa_logo.png" alt="">
@@ -73,13 +75,11 @@
                     </li>
                 </ul>
             </div>
-            <form action="/" method="post" runat="server">
                 <div style="text-align: right; min-width: 170px;">
                     <input type="text" class="search_input" value="Search">
                     <button type="submit" class="submit_button">Submit</button>
                     <asp:Button Text="Login" runat="server" PostBackUrl="~/AdminLogin.aspx" />
                 </div>
-            </form>
         </div>
 
         <div class="news_feed" id="news_feed">
@@ -161,6 +161,9 @@
             </div>
         </div>
     </div>
+
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [contentText], [titleText], [uploadSrc] FROM [Articles] ORDER BY [id] DESC"></asp:SqlDataSource>
+    </form>
 
 </body>
 
