@@ -22,6 +22,18 @@
     <div class="grid">
         <form id="form" runat="server" method="POST">
             <div class="boxText">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO Articles(contentText, titleText, uploadSrc) VALUES (@content, @title, @source)" SelectCommand="AddArticle" SelectCommandType="StoredProcedure">
+                    <InsertParameters>
+                        <asp:Parameter Name="Content" Type="String" />
+                        <asp:Parameter Name="Title" Type="String" />
+                        <asp:Parameter Name="Source" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="inputTitle" Name="Title" PropertyName="Text" Type="String" />
+                        <asp:ControlParameter ControlID="inputContentUpdate" Name="Content" PropertyName="Text" Type="String" />
+                        <asp:ControlParameter ControlID="FileUpload" Name="Source" PropertyName="FileName" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
                 <br />
                 <br />
                 <asp:TextBox ID="inputTitle" runat="server" MaxLength="20" CssClass="inputTitle"></asp:TextBox>

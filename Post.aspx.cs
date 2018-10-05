@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -34,7 +36,7 @@ public partial class AdminPage : System.Web.UI.Page
 
                 if (fileSize > 20971520)
                 {
-                    this.lblUploadMessage.Text = "Maximum file size (2MB) exceeded";
+                    this.lblUploadMessage.Text = "Maximum file size (20MB) exceeded";
                     this.lblUploadMessage.ForeColor = Color.Red;
                 }
                 else
@@ -42,9 +44,12 @@ public partial class AdminPage : System.Web.UI.Page
                     this.FileUpload.SaveAs(Server.MapPath("~/Uploads/" + this.FileUpload.FileName));
                     this.lblUploadMessage.Text = "File Uploaded";
                     this.lblUploadMessage.ForeColor = Color.GreenYellow;
-                    saveLocation("./Uploads/" + this.FileUpload.FileName);
-                    saveText("~/content/title.txt", this.inputTitle.Text);
-                    saveText("~/content/content.txt", this.inputContentUpdate.Text);
+
+                    // STOPPA IN DATABAS QUERY HÄR
+                    this.SaveToDatabase();
+                    this.SaveLocation("./Uploads/" + this.FileUpload.FileName);
+                    this.SaveText("~/content/title.txt", this.inputTitle.Text);
+                    this.SaveText("~/content/content.txt", this.inputContentUpdate.Text);
                     Response.Redirect("index.aspx");
 
                 }
@@ -58,12 +63,12 @@ public partial class AdminPage : System.Web.UI.Page
         }
     }
 
-    protected void buttonPost_Click(object sender, EventArgs e)
+    protected void ButtonPostClick(object sender, EventArgs e)
     {
         Response.Redirect("index.aspx");
     }
 
-    protected void saveLocation(string path)
+    protected void SaveLocation(string path)
     {
         using (System.IO.StreamWriter w = new System.IO.StreamWriter(Server.MapPath("~/content/upload.txt"), false))
         {
@@ -71,7 +76,7 @@ public partial class AdminPage : System.Web.UI.Page
         }
     }
 
-    protected void saveText(string path, string text)
+    protected void SaveText(string path, string text)
     {
         using (System.IO.StreamWriter w = new System.IO.StreamWriter(
             Server.MapPath(path),
@@ -79,5 +84,32 @@ public partial class AdminPage : System.Web.UI.Page
         {
             w.WriteLine(text); // Write the text
         }
+    }
+
+    protected void SaveToDatabase()
+    {
+        SqlConnection myConnection = new SqlConnection(this.SqlDataSource1.ConnectionString);
+
+        String query = "INSERT INTO dbo.Articles (contentText,titleText,uploadSrc) VALUES (@content,@title,@source)";
+
+        using (SqlCommand command = new SqlCommand(query, myConnection))
+        {
+            command.Parameters.AddWithValue("@content", this.inputContentUpdate.Text);
+            command.Parameters.AddWithValue("@title", this.inputTitle.Text);
+            command.Parameters.AddWithValue("@source", "./Uploads/" + this.FileUpload.FileName);
+            
+
+            myConnection.Open();
+            int result = command.ExecuteNonQuery();
+
+            // Check Error
+            if (result < 0)
+                Console.WriteLine("Error inserting data into Database!");
+        }
+        
+        myConnection.Close();
+
+
+
     }
 }

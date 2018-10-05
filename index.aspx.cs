@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
@@ -44,6 +45,33 @@ public partial class index : System.Web.UI.Page
         {
             string line = sr.ReadToEnd();
             return line;
+        }
+    }
+
+    protected void latestUpdate()
+    {
+        SqlConnection myConnection = new SqlConnection(this.SqlDataSource1.ConnectionString);
+
+        myConnection.Open();
+
+        SqlCommand command = new SqlCommand("SELECT * FROM UserAccounts WHERE username = @username AND password = @password", myConnection);
+
+        command.Parameters.AddWithValue("@username", this.userName.Text);
+        command.Parameters.AddWithValue("@password", this.password.Text);
+
+        SqlDataReader reader = command.ExecuteReader();
+
+        if (reader.Read())
+        {
+            Session["username"] = this.userName.Text;
+            Session["password"] = this.password.Text;
+            myConnection.Close();
+            Response.Redirect("Post.aspx");
+        }
+        else
+        {
+            this.LoginMessage.Text = "Wrong username or password";
+            myConnection.Close();
         }
     }
     
