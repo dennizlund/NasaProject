@@ -30,7 +30,12 @@
                 </asp:RequiredFieldValidator>
                 <asp:Button ID="btnLogin" runat="server" OnClick="Button1_Click" Text="Login" />
                 <asp:Button ID="btnBack" runat="server" OnClick="btnBack_OnClick" Text="Home" CausesValidation="False" />
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:NasaDatabaseConnectionString %>" SelectCommand="SELECT * FROM [UserAccounts]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [UserAccounts] WHERE (([password] = @password) AND ([username] = @username))">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="password" Name="password" PropertyName="Text" Type="String" />
+                        <asp:ControlParameter ControlID="userName" Name="username" PropertyName="Text" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
                 <br />
                 <asp:Label ID="LoginMessage" runat="server" Text=""></asp:Label>
             </form>

@@ -77,8 +77,10 @@
             </div>
                 <div style="text-align: right; min-width: 170px;">
                     <input type="text" class="search_input" value="Search">
+
                     <button type="submit" class="submit_button">Submit</button>
                     <asp:Button Text="Login" runat="server" PostBackUrl="~/AdminLogin.aspx" />
+              
                 </div>
         </div>
 
@@ -168,3 +170,21 @@
 </body>
 
 </html>
+
+<script>
+function showHint(str) {
+if (str.length == 0) {
+document.getElementById("txtHint").innerHTML = "";
+return;
+} else {
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById("txtHint").innerHTML = this.responseText;
+}
+};
+xmlhttp.open("GET", "gethint.asp?q=" + str, true);
+xmlhttp.send();
+}
+}
+</script>
