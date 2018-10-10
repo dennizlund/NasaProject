@@ -300,4 +300,12 @@ a {
     grid-area: news_feed !important;
 }
 
-#
+#livesearch{
+    display:block;
+    z-index: 1000;
+    background: grey;
+}
+
+.news_feed, .content .media{
+    z-index: -1;
+}

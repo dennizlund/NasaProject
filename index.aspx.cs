@@ -68,7 +68,7 @@ public partial class index : System.Web.UI.Page
             string title = reader["titleText"].ToString();
             string source = reader["uploadSrc"].ToString();
 
-            this.paragraph.InnerHtml = content;
+            this.paragraph.InnerHtml = content + "</br><a style='color: black' href='Content.aspx?q=" + reader["titleText"].ToString() + "'>Read more</a>";
             this.title.InnerHtml = title;
 
             if (source.EndsWith(".png") || source.EndsWith(".jpg"))

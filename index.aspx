@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="./images/nasa_logo.png">
+    <script src="./javascript/AJAX.js"></script>
 </head>
 
 <body>
@@ -75,11 +76,16 @@
                     </li>
                 </ul>
             </div>
-                <div style="text-align: right; min-width: 170px;">
-                    <input type="text" class="search_input" value="Search">
+                <div>
+                    <div>
+                        <input type="text" class="search_input" placeholder="Search" onkeyup="showResult(this.value)">
+                        <span id="livesearch"></span>
+                    </div>
 
-                    <button type="submit" class="submit_button">Submit</button>
-                    <asp:Button Text="Login" runat="server" PostBackUrl="~/AdminLogin.aspx" />
+                    <!--<button type="submit" class="submit_button">Submit</button>-->
+                    <div class="loginBtn">
+                        <asp:Button Text="Login" runat="server" PostBackUrl="~/AdminLogin.aspx" />
+                    </div>
               
                 </div>
         </div>
@@ -146,7 +152,6 @@
                 </div>
             </div>
         </div>
-
         <div class="media">
             <div class="boxVideo">
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7shzR4HPbRw" frameborder="0"
@@ -163,7 +168,6 @@
             </div>
         </div>
     </div>
-
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [contentText], [titleText], [uploadSrc] FROM [Articles] ORDER BY [id] DESC"></asp:SqlDataSource>
     </form>
 
@@ -171,20 +175,4 @@
 
 </html>
 
-<script>
-function showHint(str) {
-if (str.length == 0) {
-document.getElementById("txtHint").innerHTML = "";
-return;
-} else {
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-if (this.readyState == 4 && this.status == 200) {
-document.getElementById("txtHint").innerHTML = this.responseText;
-}
-};
-xmlhttp.open("GET", "gethint.asp?q=" + str, true);
-xmlhttp.send();
-}
-}
-</script>
+<!-- style="text-align: right; min-width: 170px; Dennis sökstyle
