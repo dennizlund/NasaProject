@@ -20,7 +20,7 @@ public partial class livesearch : System.Web.UI.Page
         while (reader.Read())
         {
             //pastes the content on the page in link form
-            Response.Write("<a href='Content.aspx?q="+reader["titleText"].ToString() + "'>" + reader["titleText"].ToString() + "</a></br>");
+            Response.Write("<a href='Content.aspx?q="+reader["id"].ToString() + "'>" + reader["titleText"].ToString() + "</a></br>");
         }
     }
 

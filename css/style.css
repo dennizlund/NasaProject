@@ -296,8 +296,8 @@ a {
     top: 40%;
 }
 
-. updateDiv #contentUpdate {
-    grid-area: news_feed !important;
+#contentUpdate {
+    grid-area: news_feed;
 }
 
 #livesearch{
@@ -308,4 +308,18 @@ a {
 
 .news_feed, .content .media{
     z-index: -1;
+}
+
+.searchBox {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.loginArea {
+    grid-area: news_feed;
+    grid-template-columns: 1fr;
+    color: white;
+    display: inline-grid;
+    margin: 0 auto;
+    width: 40%;
 }

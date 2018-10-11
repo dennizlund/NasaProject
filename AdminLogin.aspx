@@ -11,9 +11,80 @@
 </head>
 
 <body>
+<form id="form3" runat="server">
     <div class="grid">
-        <div class="news_feed">
-            <form id="form1" runat="server">
+            <div class="navigation">
+                <img src="./images/nasa_logo.png" alt="">
+                <div style="min-width: 910px">
+                    <ul id="dropdown">
+                        <li>
+                            <a href="mission.html">Mission</a>
+                        </li>
+                        <li>
+                            <a href="galleries.html">Galleries</a>
+                        </li>
+                        <li>
+                            <a href="nasatv.html">NASA TV</a>
+                        </li>
+                        <li>
+                            <a href="follow.html">Follow</a>
+                        </li>
+                        <li>
+                            <a href="downloads.html">Downloads</a>
+                        </li>
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                        <li>
+                            <a href="nasaaudiences.html">NASA Audiences</a>
+                        </li>
+                    </ul>
+                    <ul id="links">
+                        <li>
+                            <a href="humansinspace.html">Humans in Space</a>
+                        </li>
+                        <li>
+                            <a href="moontomars.html">Moon to Mars</a>
+                        </li>
+                        <li>
+                            <a href="earth.html">Earth</a>
+                        </li>
+                        <li>
+                            <a href="spacetech.html">Space Tech</a>
+                        </li>
+                        <li>
+                            <a href="flight.html">Flight</a>
+                        </li>
+                        <li>
+                            <a href="solarsystemandbeyond.html">Solar System and Beyond</a>
+                        </li>
+                        <li>
+                            <a href="education.html">Education</a>
+                        </li>
+                        <li>
+                            <a href="history.html">History</a>
+                        </li>
+                        <li>
+                            <a href="benefitsyou.html">Benefits you</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="searchBox">
+                    <div>
+                        <input type="text" class="search_input" placeholder="Search" onkeyup="showResult(this.value)">
+                        <span id="livesearch"></span>
+                    </div>
+
+                    <!--<button type="submit" class="submit_button">Submit</button>-->
+                    <div class="loginBtn">
+                        <asp:Button Text="Login" ID="Button2" OnClick="btnLogin_OnClick" runat="server" PostBackUrl="~/AdminLogin.aspx" />
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="loginArea">
                 <label for="userName">Username</label>
                 <asp:TextBox ID="userName" runat="server" TextMode="SingleLine" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
@@ -36,11 +107,11 @@
                         <asp:ControlParameter ControlID="userName" Name="username" PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
-                <br />
+                <br/>
                 <asp:Label ID="LoginMessage" runat="server" Text=""></asp:Label>
-            </form>
-        </div>
+            </div>
         
     </div>
+</form>
 </body>
 </html>

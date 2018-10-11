@@ -8,6 +8,7 @@
 <head>
     <title>Page Title</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./javascript/AJAX.js"></script>
 </head>
 
 
@@ -69,11 +70,18 @@
                     </li>
                 </ul>
             </div>
-            <form action="/" method="post" runat="server">
-                <div style="text-align: right; min-width: 170px;">
-                    <input type="text" class="search_input" value="Search">
-                    <button type="submit" class="submit_button">Submit</button>
-                    <asp:Button Text="Login" runat="server" PostBackUrl="~/AdminLogin.aspx" />
+            <form id="form1" runat="server">
+                <div class="searchBox">
+                    <div>
+                        <input type="text" class="search_input" placeholder="Search" onkeyup="showResult(this.value)">
+                        <span id="livesearch"></span>
+                    </div>
+
+                    <!--<button type="submit" class="submit_button">Submit</button>-->
+                    <div class="loginBtn">
+                        <asp:Button Text="Login" ID="btnLogin" OnClick="btnLogin_OnClick" runat="server"/>
+                    </div>
+              
                 </div>
             </form>
         </div>
@@ -92,6 +100,7 @@
             </div>
         </div>
     </div>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Articles]"></asp:SqlDataSource>
 </body>
 
 </html>

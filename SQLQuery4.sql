@@ -1,1 +1,0 @@
-﻿SELECT Id, password FROM Users WHERE username='dennis'

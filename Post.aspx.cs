@@ -49,6 +49,7 @@ public partial class AdminPage : System.Web.UI.Page
                     this.lblUploadMessage.ForeColor = Color.GreenYellow;
 
                     // STOPPA IN DATABAS QUERY HÄR
+                    
                     this.SaveToDatabase();
                     this.SaveLocation("./Uploads/" + this.FileUpload.FileName);
                     this.SaveText("~/content/title.txt", this.inputTitle.Text);
@@ -93,13 +94,14 @@ public partial class AdminPage : System.Web.UI.Page
     {
         SqlConnection myConnection = new SqlConnection(this.SqlDataSource1.ConnectionString);
 
-        String query = "INSERT INTO dbo.Articles (contentText,titleText,uploadSrc) VALUES (@content,@title,@source)";
+        String query = "INSERT INTO dbo.Articles (contentText,titleText,uploadSrc, userId) VALUES (@content,@title,@source,@userId)";
 
         using (SqlCommand command = new SqlCommand(query, myConnection))
         {
             command.Parameters.AddWithValue("@content", this.inputContentUpdate.Text);
             command.Parameters.AddWithValue("@title", this.inputTitle.Text);
             command.Parameters.AddWithValue("@source", "./Uploads/" + this.FileUpload.FileName);
+            command.Parameters.AddWithValue("@userId", this.GetUserId());
             
 
             myConnection.Open();
@@ -114,5 +116,35 @@ public partial class AdminPage : System.Web.UI.Page
 
 
 
+    }
+
+    protected int GetUserId()
+    {
+        SqlConnection myConnection = new SqlConnection(this.SqlDataSource1.ConnectionString);
+
+        String query = "SELECT * FROM UserAccounts WHERE @username = username AND @password = password";
+
+        using (SqlCommand command = new SqlCommand(query, myConnection))
+        {
+            command.Parameters.AddWithValue("@username", Session["username"]);
+            command.Parameters.AddWithValue("@password", Session["password"]);
+            
+
+
+            myConnection.Open();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                int id = Convert.ToInt32(reader["id"].ToString());
+                myConnection.Close();
+                return id;
+            }
+            myConnection.Close();
+            return 1;
+        }
+
+        
     }
 }

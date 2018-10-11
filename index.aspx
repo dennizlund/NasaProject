@@ -8,10 +8,10 @@
 <head>
     <title>NASA Copy | Welcome</title>
     <meta name="viewport" content="width=device-width">
-    <script src="./javascript/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="./images/nasa_logo.png">
+    <script src="./javascript/script.js"></script>
     <script src="./javascript/AJAX.js"></script>
 </head>
 
@@ -76,7 +76,7 @@
                     </li>
                 </ul>
             </div>
-                <div>
+                <div class="searchBox">
                     <div>
                         <input type="text" class="search_input" placeholder="Search" onkeyup="showResult(this.value)">
                         <span id="livesearch"></span>

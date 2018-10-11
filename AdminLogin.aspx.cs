@@ -61,4 +61,12 @@ public partial class AdminLogin : System.Web.UI.Page
         }
 
     }
+    protected void btnLogin_OnClick(object sender, EventArgs e)
+    {
+        if (this.btnLogin.Text == "Logout")
+        {
+            Session.Contents.RemoveAll();
+            Session.Abandon();
+        }
+    }
 }
