@@ -11,8 +11,9 @@
 </head>
 
 <body>
-<form id="form3" runat="server">
-    <div class="grid">
+    <form id="form3" runat="server">
+        <div class="grid">
+
             <div class="navigation">
                 <img src="./images/nasa_logo.png" alt="">
                 <div style="min-width: 910px">
@@ -107,11 +108,13 @@
                         <asp:ControlParameter ControlID="userName" Name="username" PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
-                <br/>
+                <br />
                 <asp:Label ID="LoginMessage" runat="server" Text=""></asp:Label>
             </div>
-        
-    </div>
-</form>
+
+        </div>
+    </form>
 </body>
 </html>
+
+<

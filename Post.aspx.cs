@@ -144,7 +144,19 @@ public partial class AdminPage : System.Web.UI.Page
             myConnection.Close();
             return 1;
         }
-
-        
     }
+
+    protected void btnLogin_OnClick(object sender, EventArgs e)
+    {
+        if (this.btnLogin.Text == "Logout")
+        {
+            Session.RemoveAll();
+            Session.Abandon();
+        }
+        else
+        {
+            Response.Redirect("AdminLogin.aspx");
+        }
+    }
+
 }
