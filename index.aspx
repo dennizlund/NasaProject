@@ -21,7 +21,7 @@
 
     <div class="grid">
         <div class="navigation">
-            <img src="./images/nasa_logo.png" alt="">
+            <a href="index.aspx"><img src="./images/nasa_logo.png" alt=""></a> 
             <div style="min-width: 910px">
                 <ul id="dropdown">
                     <li>

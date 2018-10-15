@@ -40,7 +40,9 @@ public partial class AdminLogin : System.Web.UI.Page
 
         myConnection.Open();
 
-        SqlCommand command = new SqlCommand("SELECT * FROM UserAccounts WHERE username = @username AND password = @password", myConnection);
+        SqlCommand command = new SqlCommand("SELECT * FROM [dbo].[UserAccounts] WHERE username COLLATE Latin1_General_CS_AS LIKE  '%' + @username + '%' AND password COLLATE Latin1_General_CS_AS LIKE '%' + @password + '%';", myConnection);
+
+
 
         command.Parameters.AddWithValue("@username", this.userName.Text);
         command.Parameters.AddWithValue("@password", this.password.Text);

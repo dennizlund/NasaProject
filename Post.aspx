@@ -6,24 +6,12 @@
     <title></title>
     <link href="./css/style.css" rel="stylesheet" />
     <script src="./javascript/AJAX.js"></script>
-    <%--<style type="text/css">
-        #form1 {
-            height: 729px;
-            width: 1337px;
-            margin-left: 200px;
-        }
-
-        #contentText {
-            height: 77px;
-            width: 321px;
-        }
-    </style>--%>
 </head>
 <body>
     <form id="form" runat="server" method="POST">
         <div class="grid">
             <div class="navigation">
-                <img src="./images/nasa_logo.png" alt="">
+                <a href="index.aspx"><img src="./images/nasa_logo.png" alt=""></a> 
                 <div style="min-width: 910px">
                     <ul id="dropdown">
                         <li>
@@ -94,6 +82,7 @@
 
             </div>
             <div class="loginArea">
+                <h3>Title</h3>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO Articles(contentText, titleText, uploadSrc) VALUES (@content, @title, @source)" SelectCommand="AddArticle" SelectCommandType="StoredProcedure">
                     <InsertParameters>
                         <asp:Parameter Name="Content" Type="String" />
@@ -116,6 +105,7 @@
                 </asp:RequiredFieldValidator>
                 <br />
                 <br />
+                <h3>Content</h3>
                 <asp:TextBox ID="inputContentUpdate" runat="server" TextMode="multiline" Wrap="True" CssClass="inputContentUpdate"></asp:TextBox>
                 <asp:RegularExpressionValidator runat="server" ID="valInput"
                     ControlToValidate="inputContentUpdate"
